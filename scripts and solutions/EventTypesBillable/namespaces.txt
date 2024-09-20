@@ -1,0 +1,1151 @@
+namespaces:
+  - namespace: 'AuditLog'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Alerts'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'alerts'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Default'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'insights'
+    routingType: 'API_EVENTS'
+    ingestBillable: true
+    ingestBillingCategory: 'CustomEvents'
+
+  - namespace: 'Default:Month'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'API_EVENTS'
+    ingestBillable: true
+    ingestBillingCategory: 'CustomEvents'
+
+  - namespace: 'Default:YoY'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'API_EVENTS'
+    ingestBillable: true
+    ingestBillingCategory: 'CustomEvents'
+
+  - namespace: 'Prototype'
+    visible: false
+    billable: false
+    collation: 'prototype'
+    product: 'new relic'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Agents Internal'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'apm'
+    routingType: 'APM_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'APM'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'apm'
+    routingType: 'APM_EVENTS'
+    ingestBillable: true
+    ingestBillingCategory: 'ApmEvents'
+
+  - namespace: 'APM Internal'
+    visible: false
+    billable: false
+    collation: 'apmInternal'
+    product: 'apm'
+    routingType: 'APM_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'APM Errors'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'apm'
+    routingType: 'APM_EVENTS'
+    ingestBillable: true
+    ingestBillingCategory: 'ApmEvents'
+
+  - namespace: 'Trace Storage'
+    visible: true
+    billable: false
+    collation: 'traceStorage'
+    product: 'apm'
+    routingType: 'APM_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Marker'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'UNKNOWN'
+    ingestBillable: true
+    ingestBillingCategory: 'MarkerEvents'
+
+  - namespace: 'Browser'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'browser'
+    routingType: 'APM_EVENTS'
+    ingestBillable: true
+    ingestBillingCategory: 'BrowserEvents'
+
+  - namespace: 'Browser:EventLog'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'browser'
+    routingType: 'APM_EVENTS'
+    ingestBillable: true
+    ingestBillingCategory: 'BrowserEvents'
+
+  - namespace: 'Browser Internal'
+    visible: false
+    billable: false
+    collation: 'apmInternal'
+    product: 'browser'
+    routingType: 'APM_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Browser:JSErrors'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'browser'
+    routingType: 'APM_EVENTS'
+    ingestBillable: true
+    ingestBillingCategory: 'BrowserEvents'
+
+  - namespace: 'connect'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'applied intelligence'
+    routingType: 'UNKNOWN'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'connect:System'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'applied intelligence'
+    routingType: 'UNKNOWN'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'connect:Internal'
+    visible: false
+    billable: false
+    collation: 'default'
+    product: 'applied intelligence'
+    routingType: 'UNKNOWN'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'CustomerFeedback:System'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'UNKNOWN'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'iint'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'applied intelligence'
+    routingType: 'UNKNOWN'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'iint:System'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'applied intelligence'
+    routingType: 'UNKNOWN'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'iint:Internal'
+    visible: false
+    billable: false
+    collation: 'default'
+    product: 'applied intelligence'
+    routingType: 'UNKNOWN'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Infra:System'
+    visible: true
+    billable: false
+    collation: 'infrastructure'
+    product: 'infrastructure'
+    routingType: 'INFRA_METRICS_DATA'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Infrastructure'
+    visible: true
+    billable: false
+    collation: 'infrastructure'
+    product: 'infrastructure'
+    routingType: 'INFRA_METRICS_DATA'
+    ingestBillable: true
+    ingestBillingCategory: 'InfraIntegration'
+
+  - namespace: 'InfraSamples:Raw'
+    visible: true
+    billable: false
+    collation: 'infrastructure'
+    product: 'infrastructure'
+    routingType: 'INFRA_METRICS_DATA'
+    ingestBillable: true
+    ingestBillingCategory: null
+
+  - namespace: 'InfraSamples:1m'
+    visible: true
+    billable: false
+    collation: 'infrastructure'
+    product: 'infrastructure'
+    routingType: 'INFRA_METRICS_DATA'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'InfraSamples:10m'
+    visible: true
+    billable: false
+    collation: 'infrastructure'
+    product: 'infrastructure'
+    routingType: 'INFRA_METRICS_DATA'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'InfraSamples:1h'
+    visible: true
+    billable: false
+    collation: 'infrastructure'
+    product: 'infrastructure'
+    routingType: 'INFRA_METRICS_DATA'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'InfraSamples:3h'
+    visible: true
+    billable: false
+    collation: 'infrastructure'
+    product: 'infrastructure'
+    routingType: 'INFRA_METRICS_DATA'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'InfraSamples:Alr'
+    visible: false
+    billable: false
+    collation: 'infrastructure'
+    product: 'infrastructure'
+    routingType: 'INFRA_METRICS_DATA'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Lambda'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'infrastructure'
+    routingType: 'INFRA_METRICS_DATA'
+    ingestBillable: true
+    ingestBillingCategory: 'Serverless'
+
+  - namespace: 'Lambda:System'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'infrastructure'
+    routingType: 'INFRA_METRICS_DATA'
+    ingestBillable: true
+    ingestBillingCategory: 'Serverless'
+
+  - namespace: 'Lambda:Internal'
+    visible: false
+    billable: false
+    collation: 'default'
+    product: 'infrastructure'
+    routingType: 'INFRA_METRICS_DATA'
+    ingestBillable: true
+    ingestBillingCategory: 'Serverless'
+
+  - namespace: 'Lambda:Spans'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'infrastructure'
+    routingType: 'INFRA_METRICS_DATA'
+    ingestBillable: true
+    ingestBillingCategory: 'Serverless'
+
+  - namespace: 'Lambda:Custom'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'infrastructure'
+    routingType: 'INFRA_METRICS_DATA'
+    ingestBillable: true
+    ingestBillingCategory: 'Serverless'
+
+  - namespace: 'Logging'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'logging'
+    routingType: 'LOGS'
+    ingestBillable: true
+    ingestBillingCategory: 'Logging'
+
+  - namespace: 'Logging:System'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'logging'
+    routingType: 'LOGS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Logging:Internal'
+    visible: false
+    billable: false
+    collation: 'default'
+    product: 'logging'
+    routingType: 'LOGS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'LoggingSecondary'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'logging'
+    routingType: 'LOGS'
+    ingestBillable: true
+    ingestBillingCategory: 'Logging'
+
+  - namespace: 'LoggingSecondary:System'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'logging'
+    routingType: 'LOGS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'LoggingSecondary:Internal'
+    visible: false
+    billable: false
+    collation: 'default'
+    product: 'logging'
+    routingType: 'LOGS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Logging:Archive'
+    visible: false
+    billable: true
+    collation: 'default'
+    product: 'logging'
+    routingType: 'LOGS'
+    ingestBillable: true
+    ingestBillingCategory: 'LoggingArchive'
+    computeBillableMetric: 'LoggingArchiveScannedEvents'
+    customerAccessible: true
+    restricted: 'logs.read.live_archives_data'
+
+  - namespace: 'Logging:Restricted'
+    visible: false
+    billable: false
+    collation: 'default'
+    product: 'logging'
+    routingType: 'LOGS'
+    ingestBillable: false
+    ingestBillingCategory: null
+    restricted: 'internal.read.logs_standard_data'
+
+  - namespace: 'LongTermArchive'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'UNKNOWN'
+    ingestBillable: true
+    ingestBillingCategory: 'CustomEvents'
+
+  - namespace: 'Metric'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'insights'
+    routingType: 'METRICS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Metric:System'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'insights'
+    routingType: 'METRICS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Metric:Internal'
+    visible: false
+    billable: false
+    collation: 'default'
+    product: 'insights'
+    routingType: 'METRICS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Metric:Raw'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'insights'
+    routingType: 'METRICS'
+    ingestBillable: true
+    ingestBillingCategory: 'Metrics'
+
+  - namespace: 'GoldenMetric:Raw'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'insights'
+    routingType: 'METRICS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'GoldenMetric'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'insights'
+    routingType: 'METRICS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'GoldenMetricEvaluation:Raw'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'insights'
+    routingType: 'METRICS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'GoldenMetricEvaluation'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'insights'
+    routingType: 'METRICS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'GoldenMetricPrototype:Raw'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'insights'
+    routingType: 'METRICS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'GoldenMetricPrototype'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'insights'
+    routingType: 'METRICS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'ErrorGroupMetric:Raw'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'insights'
+    routingType: 'METRICS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'ErrorGroupMetric'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'insights'
+    routingType: 'METRICS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'ServiceLevelMetric:Raw'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'METRICS'
+    ingestBillable: true
+    ingestBillingCategory: 'Metrics'
+
+  - namespace: 'ServiceLevelMetric'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'METRICS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'NrUsageMetric'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'usage'
+    routingType: 'METRICS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'NrUsageMetric:Raw'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'usage'
+    routingType: 'METRICS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'NrLimitsUsageMetric'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'insights'
+    routingType: 'METRICS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'NrLimitsUsageMetric:Raw'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'insights'
+    routingType: 'METRICS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'NrMetric'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'insights'
+    routingType: 'METRICS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'NrMetric:Raw'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'insights'
+    routingType: 'METRICS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'NrInternalMetric'
+    visible: false
+    billable: false
+    collation: 'default'
+    product: 'insights'
+    routingType: 'METRICS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'NrInternalMetric:Raw'
+    visible: false
+    billable: false
+    collation: 'default'
+    product: 'insights'
+    routingType: 'METRICS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Mobile'
+    visible: false
+    billable: false
+    collation: 'default'
+    product: 'mobile'
+    routingType: 'MOBILE_DATA'
+    ingestBillable: true
+    ingestBillingCategory: 'MobileEvents'
+
+  - namespace: 'Mobile Internal'
+    visible: false
+    billable: false
+    collation: 'mobileInternal'
+    product: 'mobile'
+    routingType: 'MOBILE_DATA'
+    ingestBillable: true
+    ingestBillingCategory: 'MobileEvents'
+
+  - namespace: 'Breadcrumb'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'mobile'
+    routingType: 'MOBILE_DATA'
+    ingestBillable: true
+    ingestBillingCategory: 'MobileEvents'
+
+  - namespace: 'Mobile Crash'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'mobile'
+    routingType: 'MOBILE_CRASH'
+    ingestBillable: true
+    ingestBillingCategory: 'MobileEvents'
+
+  - namespace: 'Mobile Error'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'mobile'
+    routingType: 'MOBILE_DATA'
+    ingestBillable: true
+    ingestBillingCategory: 'MobileEvents'
+
+  - namespace: 'Mobile Exception'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'mobile'
+    routingType: 'MOBILE_DATA'
+    ingestBillable: true
+    ingestBillingCategory: 'MobileEvents'
+
+  - namespace: 'Mobile Session'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'mobile'
+    routingType: 'MOBILE_DATA'
+    ingestBillable: true
+    ingestBillingCategory: 'MobileEvents'
+
+  - namespace: 'Mobile General'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'mobile'
+    routingType: 'MOBILE_DATA'
+    ingestBillable: true
+    ingestBillingCategory: 'MobileEvents'
+
+  - namespace: 'NrAiAnalytics'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'applied intelligence'
+    routingType: 'UNKNOWN'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'NrAiAnalytics:System'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'applied intelligence'
+    routingType: 'UNKNOWN'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'NrAiAnalytics:Internal'
+    visible: false
+    billable: false
+    collation: 'default'
+    product: 'applied intelligence'
+    routingType: 'UNKNOWN'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'NR Usage'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'usage'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+    computeBillable: false
+
+  - namespace: 'NrMetering:System'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+    computeBillable: false
+
+  - namespace: 'NrNotification'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'PcvPerf'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'UNKNOWN'
+    ingestBillable: true
+    ingestBillingCategory: 'BrowserEvents'
+
+  - namespace: 'PcvPerf:System'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'UNKNOWN'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'PcvPerf:Internal'
+    visible: false
+    billable: false
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'UNKNOWN'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'proactv'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'applied intelligence'
+    routingType: 'UNKNOWN'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'proactv:System'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'applied intelligence'
+    routingType: 'UNKNOWN'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'proactv:Internal'
+    visible: false
+    billable: false
+    collation: 'default'
+    product: 'applied intelligence'
+    routingType: 'UNKNOWN'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Security'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'API_EVENTS'
+    ingestBillable: true
+    ingestBillingCategory: 'Security'
+
+  - namespace: 'Security:Preview'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'sixsens'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'UNKNOWN'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'sixsens:System'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'UNKNOWN'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'sixsens:Internal'
+    visible: false
+    billable: false
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'UNKNOWN'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Synthetics'
+    visible: true
+    billable: false
+    collation: 'synthetics'
+    product: 'synthetics'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Launchp'
+    visible: true
+    billable: false
+    collation: 'traceStorage'
+    product: 'distributed tracing'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Launchp Internal'
+    visible: false
+    billable: false
+    collation: 'traceStorage'
+    product: 'distributed tracing'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Tracing Errors'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'distributed tracing'
+    routingType: 'TRACES'
+    ingestBillable: true
+    ingestBillingCategory: 'Tracing'
+
+  - namespace: 'Tracing Internal'
+    visible: false
+    billable: false
+    collation: 'default'
+    product: 'distributed tracing'
+    routingType: 'TRACES'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Tracing Spans'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'distributed tracing'
+    routingType: 'TRACES'
+    ingestBillable: true
+    ingestBillingCategory: 'Tracing'
+
+  - namespace: 'Tracing:System'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'distributed tracing'
+    routingType: 'TRACES'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'TracingExtended:Internal'
+    visible: false
+    billable: false
+    collation: 'default'
+    product: 'distributed tracing'
+    routingType: 'TRACES'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'WorkloadStatus'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'workloads'
+    routingType: 'API_EVENTS'
+    ingestBillable: true
+    ingestBillingCategory: 'ApmEvents'
+
+  - namespace: 'Workloads'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'workloads'
+    routingType: 'API_EVENTS'
+    ingestBillable: true
+    ingestBillingCategory: 'ApmEvents'
+
+  - namespace: "ServiceLevel"
+    visible: true
+    billable: true
+    collation: "default"
+    product: "new relic"
+    routingType: "API_EVENTS"
+    ingestBillable: true
+    ingestBillingCategory: "ApmEvents"
+
+  - namespace: 'EntityPlatform'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'ActivityStream:Internal'
+    visible: false
+    billable: false
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Custom:A'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'insights'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Custom:B'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'insights'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Custom:C'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'insights'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Custom:D'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'insights'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Custom:0'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'insights'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Custom:1'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'insights'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Custom:2'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'insights'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Custom:3'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'insights'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Custom:4'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'insights'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Custom:5'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'insights'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Custom:6'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'insights'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Custom:7'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'insights'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Custom:8'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'insights'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'Custom:9'
+    visible: true
+    billable: true
+    collation: 'default'
+    product: 'insights'
+    routingType: 'API_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'ObservabilityMaturityArchitecture:System'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'UNKNOWN'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'sixsensStreams'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'UNKNOWN'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'sixsensStreams:System'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'UNKNOWN'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'sixsensStreams:Internal'
+    visible: false
+    billable: false
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'UNKNOWN'
+    ingestBillable: false
+    ingestBillingCategory: null
+  
+  - namespace: 'Browser:Preview'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'browser'
+    routingType: 'APM_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+  
+  - namespace: 'Browser:System'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'browser'
+    routingType: 'APM_EVENTS'
+    ingestBillable: false
+    ingestBillingCategory: null
+
+  - namespace: 'DiagCLILogs:System'
+    visible: true
+    billable: false
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'UNKNOWN'
+    ingestBillable: false
+    ingestBillingCategory: null
+    computeBillable: false
+
+  - namespace: 'DiagCLILogs:Internal'
+    visible: false
+    billable: false
+    collation: 'default'
+    product: 'new relic'
+    routingType: 'UNKNOWN'
+    ingestBillable: false
+    ingestBillingCategory: null
+    computeBillable: false
