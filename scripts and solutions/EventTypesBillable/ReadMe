@@ -1,0 +1,26 @@
+# Event Type Processing Script
+
+NOTE: this tool is only for internal NR employees
+
+## Overview
+
+This Python script queries the New Relic NerdGraph API to retrieve unique event namespaces based on specified event types. It checks whether each namespace is billable by referencing a local configuration file (`namespaces.txt`). The results are then saved to a CSV file (`event_type_results.csv`).
+
+## Requirements
+
+- Python 3.x
+- `requests` library (install via pip if not already installed)
+- API Key of NR Admin who is a Full Platform user that has access to query data in account 313870
+
+## Steps
+
+1. Clone this repository
+2. Edit 'API-Key': 'REDACTED' in the script to utilize your NR internal API key agaisnt account 313870
+2. Ensure you have the following files in the same directory as the script:
+* event_types.csv: A CSV file containing the event types you want to query.
+* namespaces.txt: A text file containing namespace configurations with billable statuses -- note this txt file is taken from [here](https://source.datanerd.us/core-data-platform/namespaces/blob/b0cca6d7d4f34afca370524538254ef89e14779a/src/main/resources/namespaces.yml) which is only accessible to NR employees.
+3. Run the script
+4. After execution, check event_type_results.csv for the output, which will contain:
+* Event Type
+* Namespace
+* Billable (True/False)
