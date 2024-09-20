@@ -15,12 +15,13 @@ This Python script queries the New Relic NerdGraph API to retrieve unique event 
 ## Steps
 
 1. Clone this repository
-2. Edit 'API-Key': 'REDACTED' in the script to utilize your NR internal API key agaisnt account 313870
-2. Ensure you have the following files in the same directory as the script:
+2. Edit 'API-Key': 'REDACTED' in the .py file to utilize your NR internal API key agaisnt account 313870
+3. Edit the namespaces.txt file, pasting in the contents of [this repo](https://source.datanerd.us/core-data-platform/namespaces/blob/b0cca6d7d4f34afca370524538254ef89e14779a/src/main/resources/namespaces.yml)
+4. Ensure you have the following files in the same directory as the script:
 * event_types.csv: A CSV file containing the event types you want to query.
 * namespaces.txt: A text file containing namespace configurations with billable statuses -- note this txt file is taken from [here](https://source.datanerd.us/core-data-platform/namespaces/blob/b0cca6d7d4f34afca370524538254ef89e14779a/src/main/resources/namespaces.yml) which is only accessible to NR employees.
-3. Run the script
-4. After execution, check event_type_results.csv for the output, which will contain:
+5. Run the script
+6. After execution, check event_type_results.csv for the output, which will contain:
 * Event Type
 * Namespace
 * Billable (True/False)
