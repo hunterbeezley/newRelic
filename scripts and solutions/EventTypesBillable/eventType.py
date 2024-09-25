@@ -30,7 +30,7 @@ def parse_namespaces(results):
             namespaces.extend(result['uniques.storedEventNamespace'])
     return namespaces
 
-def check_billable(namespace, namespaces_file):
+def check_ingest_billable(namespace, namespaces_file):
     with open(namespaces_file, 'r') as file:
         content = file.read()
         namespace_blocks = content.split('-')
@@ -38,9 +38,9 @@ def check_billable(namespace, namespaces_file):
             lines = block.strip().split('\n')
             if lines and lines[0].strip() == f"namespace: '{namespace}'":
                 for line in lines[1:]:
-                    if 'billable:' in line:
-                        return line.split('billable:')[1].strip().lower() == 'true'
-    return False
+                    if 'ingestBillable:' in line:
+                        return line.split('ingestBillable:')[1].strip().lower() == 'true'
+    return False  # Default to False if not found
 
 def main():
     output_data = []
@@ -57,9 +57,9 @@ def main():
                 print(f"Namespaces found for {event_type}: {namespaces}")
                 
                 for namespace in namespaces:
-                    billable = check_billable(namespace, 'namespaces.txt')
-                    output_data.append([event_type, namespace, billable])
-                    print(f"Added to output: {event_type}, {namespace}, {billable}")
+                    ingest_billable = check_ingest_billable(namespace, 'namespaces.txt')
+                    output_data.append([event_type, namespace, ingest_billable])
+                    print(f"Added to output: {event_type}, {namespace}, {ingest_billable}")
             except Exception as e:
                 print(f"Error processing {event_type}: {str(e)}")
 
@@ -68,7 +68,7 @@ def main():
     # Write results to CSV
     with open('event_type_results.csv', 'w', newline='') as output_file:
         csv_writer = csv.writer(output_file)
-        csv_writer.writerow(['Event Type', 'Namespace', 'Billable'])  # Header
+        csv_writer.writerow(['Event Type', 'Namespace', 'Ingest Billable'])  # Updated header
         csv_writer.writerows(output_data)
 
     print(f"Results have been written to event_type_results.csv")
