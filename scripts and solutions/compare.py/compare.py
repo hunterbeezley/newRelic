@@ -16,9 +16,12 @@ def compare_users(tsv_file, json_file):
         # Read JSON file
         with open(json_file, 'r') as json_data:
             data = json.load(json_data)
-            if 'users_moved' not in data:
-                raise ValueError("JSON file does not have a 'users_moved' key")
-            json_users = set(str(user) for user in data['users_moved'])  # Convert to string
+            if 'users_moved' in data:
+                json_users = set(str(user) for user in data['users_moved'])
+            elif 'users_to_move' in data:
+                json_users = set(str(user) for user in data['users_to_move'])
+            else:
+                raise ValueError("JSON file does not have 'users_moved' or 'users_to_move' key")
 
         # Compare users
         discrepancies = tsv_users.symmetric_difference(json_users)
