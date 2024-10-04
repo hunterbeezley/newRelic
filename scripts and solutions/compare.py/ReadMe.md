@@ -1,7 +1,7 @@
 This tool is for performing User Asset Migrations. 
-The script compares a TSV of users (retrieved from the NR userManagement UI before running the migration) against the JSON of the migration results.
+The script compares a TSV of users (taken from the user management UI) of users in the source auth domain (if running manual to manual) or destination auth domain (if manual to scim), against the JSON of the migration results.
 
-The script takes in the path of each file, parses the content to find exact matching srrings of the "ID" from the TSV and the "users_migrated": array from the JSON.
+The script takes in the path of each file, parses the content to find exact matching strings of the "ID" from the TSV and the "users_migrated": array from the JSON.
 
 This script will be helpful for particularly large asset migrations. 
 
