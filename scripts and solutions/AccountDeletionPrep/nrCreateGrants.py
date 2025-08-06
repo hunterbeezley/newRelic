@@ -53,7 +53,7 @@ def create_group(api_key, auth_domain_id):
       userManagementCreateGroup(
         createGroupOptions: {
           authenticationDomainId: "%s"
-          displayName: "NrDeletionGroup"
+          displayName: "NrGlobalAdmin"
         }
       ) {
         group {
@@ -129,8 +129,43 @@ def get_default_auth_domain_id(api_key):
         print("Error:", str(e))
         return None
 
+# NEW FUNCTION
+def get_all_account_ids(api_key, org_id):
+    endpoint = "https://api.newrelic.com/graphql"
+
+    query = """
+    {
+      customerAdministration {
+        accounts(filter: {organizationId: {eq: "%s"}, status: {eq: ACTIVE}}) {
+          items {
+            id
+          }
+        }
+      }
+    }
+    """ % org_id
+
+    headers = {
+        "Content-Type": "application/json",
+        "Api-Key": api_key
+    }
+
+    try:
+        response = requests.post(endpoint, json={"query": query}, headers=headers)
+        response.raise_for_status()
+
+        data = response.json()
+        account_ids = [item["id"] for item in data["data"]["customerAdministration"]["accounts"]["items"]]
+        print(f"Fetched {len(account_ids)} active accounts.")
+        return account_ids
+    except requests.exceptions.RequestException as e:
+        print("Failed to fetch account IDs.")
+        print("Error:", str(e))
+        return None
+
 def main():
     api_key = input("Enter your New Relic API key: ")
+    org_id = input("Enter your New Relic Organization ID: ")
 
     # Get default authentication domain ID
     auth_domain_id = get_default_auth_domain_id(api_key)
@@ -144,19 +179,15 @@ def main():
         print("Failed to create group. Exiting.")
         return
 
-    csv_file_path = input("Enter the path to the CSV file: ")
+    # Get all account IDs for the organization
+    account_ids = get_all_account_ids(api_key, org_id)
+    if not account_ids:
+        print("Failed to get account IDs. Exiting.")
+        return
 
-    try:
-        with open(csv_file_path, 'r') as file:
-            reader = csv.reader(file)
-            next(reader)  # Skip the header row if exists
-            for row in reader:
-                account_id = row[0]  # Assuming the account ID is in the first column
-                execute_api_mutation(api_key, account_id, group_id)
-    except FileNotFoundError:
-        print("Error: CSV file not found.")
-    except IndexError:
-        print("Error: CSV file is empty or malformed.")
+    # Process each account ID
+    for account_id in account_ids:
+        execute_api_mutation(api_key, account_id, group_id)
 
 if __name__ == "__main__":
     main()
