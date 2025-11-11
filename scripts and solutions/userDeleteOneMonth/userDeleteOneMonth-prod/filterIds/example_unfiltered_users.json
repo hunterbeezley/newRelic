@@ -1,0 +1,57 @@
+
+****
+this is an example of what your json could look like before the filterIds script is run. 
+When the filterIds script is run, you'll be asked to provide a path to THIS file. 
+The script will generate a new .json of only unique userIds, created only according to the x days ago perameters you provided.
+****
+
+{
+    "full_name": "Hunter ",
+    "id": "REDACTED",
+    "email": "REDACTED",
+    "version": 2,
+    "created_at": 1742845361979,
+    "details": "REDACTED",
+    "last_active": 0,
+    "user_tier": "full_user_tier",
+    "active_idp": "azureb2c",
+    "organization": {
+      "name": "Hunter's Staging Partnership Org",
+      "url": "REDACTED"
+    }
+  }
+]
+
+ {
+    "full_name": "Hunter ",
+    "id": "REDACTED",
+    "email": "REDACTED",
+    "version": 2,
+    "created_at": 1742845361979,
+    "details": "REDACTED",
+    "last_active": 0,
+    "user_tier": "full_user_tier",
+    "active_idp": "azureb2c",
+    "organization": {
+      "name": "Hunter's Staging Partnership Org",
+      "url": "REDACTED"
+    }
+  }
+]
+
+ {
+    "full_name": "Hunter ",
+    "id": "REDACTED",
+    "email": "REDACTED",
+    "version": 2,
+    "created_at": 1742845361979,
+    "details": "REDACTED",
+    "last_active": 0,
+    "user_tier": "full_user_tier",
+    "active_idp": "azureb2c",
+    "organization": {
+      "name": "Hunter's Staging Partnership Org",
+      "url": "REDACTED"
+    }
+  }
+]
