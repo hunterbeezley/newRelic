@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 New Relic User Filter Script
-Filters users from metadata JSON based on createdAt date (older than 1 month)
+Filters users from metadata JSON based on createdAt date (older than 1 month, unless modified)
 and outputs unique user IDs in the format expected by massDeleteUsers.py
 """
 
