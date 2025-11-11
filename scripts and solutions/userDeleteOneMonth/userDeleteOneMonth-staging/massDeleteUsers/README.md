@@ -1,4 +1,4 @@
-# userDeleteOneMonth
+# userDeleteOneMonth - Staging
 
 A script that takes in a .json file of user ID's and executes a Nerdgraph API mutation to delete each one. 
 
