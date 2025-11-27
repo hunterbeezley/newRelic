@@ -11,7 +11,7 @@
 - **A USER KEY WITH PERMISSIONS TO DELETE ANY USER WILL BE REQUIRED** -- If you do not have these permissions, this script is not for you :)
 - **BACKUP FIRST** - While a rollback is not possible, having an export of user Id's prior to deletion is a good idea for auditing.
 
-**If you're unsure whether you need this tool, you probably don't. Manual deletion is safer for small batches.**
+**If you're unsure whether you need this tool, you probably don't. It was created for a very specific use-case to clean up hundreds of old user-records. In almost all other cases, manual deletion is safer and easier.**
 
 ---
 
@@ -24,7 +24,7 @@ This is a two-script workflow for bulk deletion of New Relic user records:
 
 There are two folders for each version of these workflows: `userDeleteOneMonth-prod` & `userDeleteOneMonth-staging`. Follow one or both depending on needs.
 
-**Use Case for this two-script workflow**: When accidental user provisioning creates hundreds of duplicate user records for the same email address, making manual deletion impractical.
+**Use-Case for this two-script workflow**: When accidental user provisioning creates hundreds of duplicate user records for the same email address, making manual deletion impractical and tedious. The filtering is simply for if you want to delete _all but the most recent (eg. all users since X days ago) user-records_
 
 ---
 
@@ -87,7 +87,7 @@ python filterOldUsers.py
 - Filters to users with `created_at` older than X days ago
 - Shows you statistics (total users, filtered users, exclusions)
 - Saves filtered user IDs to a new JSON file
-- Handles duplicates automatically (skips them)
+- Handles duplicate Ids automatically if present (skips them)
 
 **Example output**:
 ```
@@ -123,7 +123,6 @@ Users with created date:          11
 **Red flags**:
 - More users than expected
 - User IDs you don't recognize
-- Mix of different email addresses (if you're targeting one email)
 
 ### Step 3: Delete Users (Point of No Return)
 
@@ -207,7 +206,6 @@ Total failed: 0
 
 ---
 
-## Environment-Specific Details
 
 ### Staging vs Production
 
@@ -227,10 +225,6 @@ userDeleteOneMonth/
 - **Staging**: `https://staging-api.newrelic.com/graphql`
 - **Production**: `https://api.newrelic.com/graphql`
 
-**Best Practice**: 
-1. Always test your complete workflow in staging first
-2. Use staging to validate your filters and date thresholds
-3. Only move to production after confirming staging results
 
 ---
 
@@ -265,7 +259,7 @@ Your input can be any JSON with user objects containing `id` and `created_at`:
 
 ### For massDeleteUsers.py (Step 2)
 
-Must be in this exact format (automatically created by filterOldUsers.py):
+Must be in this format (but this should be automatically created by filterOldUsers.py):
 
 ```json
 {
@@ -326,134 +320,11 @@ Must be in this exact format (automatically created by filterOldUsers.py):
 - Ensure proper quote marks (not smart quotes from Word/Docs)
 - Verify file encoding is UTF-8
 
-**Script hangs or freezes**
+**Script hangs**
 - Press Ctrl+C to cancel
-- Check that input file isn't corrupted
 - Try with a smaller test file first
 
----
 
-## Security Best Practices
-
-1. **Never commit API keys to version control**
-   - Add `config/api_key.txt` to `.gitignore`
-   - Rotate keys after use if they're exposed
-
-2. **Restrict API key permissions**
-   - Use keys with minimum required permissions
-   - Consider time-limited keys for one-off operations
-
-3. **Audit trail**
-   - Document when and why you ran the script
-   - Save copies of input/output files
-   - Record who authorized the deletion
-
-4. **Test with small batches**
-   - Run with 1-2 users first in staging
-   - Verify deletion in UI before scaling up
-   - Gradually increase batch sizes
-
----
-
-## Example Real-World Workflow
-
-**Scenario**: Accidental provisioning created 200 user records for `john.doe@example.com`
-
-### Phase 1: Investigation (Staging)
-```bash
-# 0. First-time setup: Create venv and install dependencies
-cd userDeleteOneMonth-staging/massDeleteUsers
-python3 -m venv venv
-source venv/bin/activate  # or venv\Scripts\activate on Windows
-pip install -r requirements.txt
-cd ..
-
-# 1. Export user metadata to users_export.json
-
-# 2. Filter to users older than 30 days
-cd filterIds
-python filterOldUsers.py
-# Input: users_export.json
-# Threshold: 30 days
-# Output: users_export_filtered.json
-
-# 3. Review filtered file
-cat users_export_filtered.json
-# Verify count: Should show ~200 user IDs
-
-# 4. Test delete in staging (with just 2 IDs first)
-cd ../massDeleteUsers
-source venv/bin/activate  # Activate venv if not already active
-# Edit users_export_filtered.json to only have 2 IDs
-python massDeleteUsers.py
-# Input: users_export_filtered.json
-# Confirm: y
-
-# 5. Verify in staging UI that 2 users are gone
-```
-
-### Phase 2: Production (After Staging Success)
-```bash
-# 6. Get approval from management/security
-
-# 7. Setup prod venv (first time only)
-cd userDeleteOneMonth-prod/massDeleteUsers
-python3 -m venv venv
-source venv/bin/activate  # or venv\Scripts\activate on Windows
-pip install -r requirements.txt
-cd ..
-
-# 8. Export production user metadata to prod_users.json
-
-# 9. Filter production users
-cd filterIds
-python filterOldUsers.py
-# Input: prod_users.json
-# Threshold: 30 days
-# Output: prod_users_filtered.json
-
-# 10. CRITICAL: Review every ID in prod_users_filtered.json
-
-# 11. Execute deletion in small batches
-cd ../massDeleteUsers
-source venv/bin/activate  # Activate venv if not already active
-
-# First batch: 10 users
-python massDeleteUsers.py
-# Verify in UI
-
-# Second batch: 50 users
-python massDeleteUsers.py
-# Verify in UI
-
-# Final batch: remaining 140 users
-python massDeleteUsers.py
-# Verify in UI
-
-# 12. Document completion
-# 13. Deactivate venv when done
-deactivate
-```
-
----
-
-## When NOT to Use This Tool
-
-- **Small batches** (< 10 users) - Manual deletion is safer and faster
-- **Users you're unsure about** - Investigate first, delete later
-- **Active users** - They might be legitimate, check with account owner
-- **SCIM-managed users** - These require SCIM provider changes, not API deletion
-- **Recent users** (< 7 days old) - May still be in provisioning, wait and verify first
-- **Production without staging test** - Always test in staging first
-
----
-
-## Support and Questions
-
-For questions about:
-- **New Relic user management**: See NerdGraph documentation
-- **Script bugs or improvements**: Contact the script maintainer
-- **Authorization to use this tool**: Contact your manager or security team
 
 ---
 
@@ -491,9 +362,4 @@ userDeleteOneMonth/
 
 ---
 
-## Changelog
 
-- **v1.0** - Initial release with two-script workflow
-- Scripts support flexible JSON input formats
-- Interactive prompts with confirmation steps
-- Staging and production environment separation
