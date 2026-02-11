@@ -1,7 +1,4 @@
 # SendGrid Tool - Quick Reference Cheat Sheet
-
-
-
 ---
 
 ## First Time Setup (Once)
@@ -74,7 +71,7 @@ cd /Users/hbeezley/Desktop/new_relic/scripts/sendGrid
 
 | Flag | What it does |
 |------|-------------|
-| `--dry-run` | **Always use first** - previews changes without executing |
+| `--dry-run` | - previews changes without executing |
 | `--lists <list1> <list2>` | Target specific lists (bounces, blocks, spam_reports, etc.) |
 | `--no-confirm` | Skip confirmation prompt (automation mode) |
 
@@ -125,16 +122,7 @@ user3@example.com
 
 ---
 
-## Full Documentation
-
-- Beginners: [GETTING_STARTED.md](GETTING_STARTED.md)
-- Technical: [readMe.md](readMe.md)
-
----
-
 ## Remember
-
-✅ **Always do a `--dry-run` first**
 ✅ **SSL configured automatically on macOS** (setup.sh extracts certificates)
 ✅ **Tool checks all 7 accounts automatically**
 ✅ **Logs saved to `logs/` directory**
@@ -142,4 +130,4 @@ user3@example.com
 
 ---
 
-**Questions?** Ask in your team's Slack channel or see [GETTING_STARTED.md](GETTING_STARTED.md)
+
