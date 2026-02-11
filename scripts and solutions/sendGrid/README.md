@@ -122,11 +122,12 @@ user3@example.com
 
 ---
 
-## Remember
-✅ **SSL configured automatically on macOS** (setup.sh extracts certificates)
-✅ **Tool checks all 7 accounts automatically**
-✅ **Logs saved to `logs/` directory**
-✅ **Get API keys from 1Password GTS vault**
+## Note:
+
+- **SSL configured automatically on macOS** (setup.sh extracts certificates)
+- **Tool checks all 7 accounts automatically**
+- **Logs saved to `logs/` directory**
+- **Get API keys from 1Password GTS vault**
 
 ---
 
