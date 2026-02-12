@@ -12,7 +12,7 @@
 # 5. Tests connections to all SendGrid accounts
 # 6. Creates necessary directories
 #
-# No Python or development experience needed - just follow the prompts!
+
 
 set -e  # Exit on error
 
@@ -323,6 +323,8 @@ if [ -f ".env" ]; then
         print_info "Backed up existing .env to $backup_file"
     else
         print_success "Keeping existing .env file"
+        # Ensure existing .env has secure permissions
+        chmod 600 .env
         SKIP_ENV_SETUP=true
     fi
 fi
@@ -337,10 +339,16 @@ if [ "$SKIP_ENV_SETUP" != true ]; then
         exit 1
     fi
 
+    # Ensure .env.template is readable
+    chmod 644 .env.template 2>/dev/null || print_warning "Could not set permissions on .env.template"
+
     echo ""
     echo "Creating .env file from template..."
     cp .env.template .env
-    print_success ".env file created"
+
+    # Secure .env file with restrictive permissions (owner read/write only)
+    chmod 600 .env
+    print_success ".env file created with secure permissions (600)"
 fi
 
 # Check if .env has placeholder values
