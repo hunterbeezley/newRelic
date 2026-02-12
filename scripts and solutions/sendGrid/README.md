@@ -4,7 +4,7 @@
 ## First Time Setup (Once)
 
 ```bash
-cd /Users/hbeezley/Desktop/new_relic/scripts/sendGrid
+cd YOUR/PATH/HERE
 ./setup.sh
 ```
 
@@ -16,7 +16,7 @@ Follow the prompts. Get API keys from 1Password GTS vault.
 
 **Navigate to the tool directory first:**
 ```bash
-cd /Users/hbeezley/Desktop/new_relic/scripts/sendGrid
+cd YOUR/PATH/HERE
 ```
 
 ### Test Connections
