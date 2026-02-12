@@ -843,7 +843,8 @@ Examples:
             print(f"✓ Email: {args.email}")
 
             # Check which suppression lists contain this email
-            print("\nChecking suppression lists across all accounts...")
+            list_names = ", ".join([name.capitalize() for name in remover.target_lists.keys()])
+            print(f"\nChecking suppressions on {list_names} list(s) across all accounts...")
             print("-" * 80)
             account_suppressions = remover.check_email_suppressions(args.email)
 
@@ -870,7 +871,8 @@ Examples:
             print(f"✓ Found {len(emails)} emails")
 
             # Check suppression details for each email
-            print("\nChecking suppression lists across all accounts for each email...")
+            list_names = ", ".join([name.capitalize() for name in remover.target_lists.keys()])
+            print(f"\nChecking suppressions on {list_names} list(s) across all accounts for each email...")
             print("-" * 80)
 
             email_suppression_map = {}  # Maps email -> dict of {account: [details]}
