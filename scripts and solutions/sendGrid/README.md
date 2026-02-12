@@ -19,17 +19,17 @@ Follow the prompts. Get API keys from 1Password GTS vault.
 cd YOUR/PATH/HERE
 ```
 
-### Test Connections
+### Test Connections -- tests that api keys work
 ```bash
 ./run.sh test
 ```
 
-### Check if Email is Suppressed
+### Check if Email is Suppressed -- ONLY checks, doesn't even prompt for removal (super safe mode)
 ```bash
 ./run.sh check user@example.com
 ```
 
-### Remove Single Email
+### Remove Single Email -- checks for suppressions AND prompts for removal (dry-run as a safe mode to simulatae results)
 
 **Dry run first (preview):**
 ```bash
@@ -41,7 +41,7 @@ cd YOUR/PATH/HERE
 ./run.sh remove --email user@example.com
 ```
 
-### Remove Multiple Emails from CSV
+### Remove Multiple Emails from CSV -- checks for suppressions AND prompts for removal (dry-run as a safe mode to simulatae results)
 
 **Dry run first:**
 ```bash
@@ -53,7 +53,9 @@ cd YOUR/PATH/HERE
 ./run.sh remove --csv emails.csv
 ```
 
-### Remove All Emails from Domain
+### Remove All Emails from Domain -- checks for suppressions AND prompts for removal (dry-run as a safe mode to simulatae results)
+
+### NOTE: searching by domain takes a *LONG* time to process (15-20mins) because we have to fetch every suppression for every account/list and then filter on the domain (be patient pls)
 
 **Dry run first:**
 ```bash
