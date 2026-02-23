@@ -1,0 +1,5 @@
+# Copy this file to terraform.tfvars and fill in your actual values
+# terraform.tfvars is gitignored and will not be committed
+
+new_relic_api_key    = "NRAK-YOUR_API_KEY_HERE"
+new_relic_account_id = "YOUR_ACCOUNT_ID_HERE"
