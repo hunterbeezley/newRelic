@@ -207,7 +207,7 @@ class SendGridSuppressionRemover:
         self.logger.info(f"Read {len(emails)} emails from {csv_path}")
         return emails
 
-    def fetch_list_suppressions(self, list_name: str, endpoint: str, headers: Dict = None, max_pages: int = 500, account_name: str = None) -> List[Dict]:
+    def fetch_list_suppressions(self, list_name: str, endpoint: str, headers: Dict = None, max_pages: int = 2000, account_name: str = None) -> List[Dict]:
         """
         Fetch all suppressions from a specific list (with pagination).
 
@@ -215,7 +215,7 @@ class SendGridSuppressionRemover:
             list_name: Name of the list (for logging)
             endpoint: API endpoint path
             headers: Optional headers dict (if None, uses self.headers)
-            max_pages: Maximum number of pages to fetch (safety limit, default 500 = 250k records)
+            max_pages: Maximum number of pages to fetch (safety limit, default 2000 = 1M records)
             account_name: Account name for logging purposes
 
         Returns:
@@ -618,9 +618,22 @@ class SendGridSuppressionRemover:
         self.logger.info("SUMMARY")
         self.logger.info("="*60)
         self.logger.info(f"Total emails processed: {self.stats['total']}")
-        self.logger.info(f"Successful removals:    {self.stats['successful']}")
-        self.logger.info(f"Failed removals:        {self.stats['failed']}")
-        self.logger.info(f"Skipped (invalid):      {self.stats['skipped']}")
+        self.logger.info(f"Successful removals:    {self.stats['successful']} emails")
+        self.logger.info(f"Failed removals:        {self.stats['failed']} emails")
+        self.logger.info(f"Skipped (invalid):      {self.stats['skipped']} emails")
+
+        # Show per-account statistics
+        total_account_removals = sum(acc_stats["successful"] for acc_stats in self.account_stats.values())
+        if total_account_removals > 0:
+            self.logger.info(f"\nTotal account/list removals: {total_account_removals}")
+            self.logger.info("\nBreakdown by account:")
+            for account_name, acc_stats in self.account_stats.items():
+                if acc_stats["successful"] > 0 or acc_stats["failed"] > 0:
+                    self.logger.info(f"  {account_name}:")
+                    self.logger.info(f"    Successful: {acc_stats['successful']}")
+                    if acc_stats["failed"] > 0:
+                        self.logger.info(f"    Failed:     {acc_stats['failed']}")
+
         self.logger.info("="*60)
 
         if self.stats['failed'] > 0:
