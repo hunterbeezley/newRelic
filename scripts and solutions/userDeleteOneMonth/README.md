@@ -58,8 +58,6 @@ pip list  # Should show 'requests' package
 
 ### Step 1: Filter Users by Date
 
-**Purpose**: Narrow down hundreds/thousands of user records to only those older than X days
-
 **Location**: 
 - Staging: `userDeleteOneMonth-staging/filterIds/filterOldUsers.py`
 - Production: `userDeleteOneMonth-prod/filterIds/filterOldUsers.py`
@@ -74,7 +72,7 @@ cd userDeleteOneMonth-staging/filterIds  # or -prod
 python filterOldUsers.py
 ```
 
-**Interactive prompts**:
+**Prompts**:
 1. Path to your user metadata JSON file
 2. Days threshold (default: 30)
 3. Output file path (default: `{input_filename}_filtered.json`)
