@@ -1,9 +1,6 @@
 # New Relic User Mass Deletion Tool - prod & staging
 
-## ⚠️ CRITICAL WARNINGS ⚠️
-
-**READ THIS ENTIRE SECTION BEFORE PROCEEDING**
-
+## ⚠️ READ THIS ENTIRE SECTION BEFORE PROCEEDING ⚠️ 
 - **THIS PERMANENTLY DELETES USER RECORDS** - There is no easy way to undo, recover, or rollback
 - **ONLY USE FOR EXTREME EDGE-CASES** -- where hundreds of duplicate user records exist for the same email
 - **ALWAYS TEST AGAINST TEST USERS FIRST** - Make sure you understand how this works against users that are safe to delete before trouching the real users (especially in prod)
