@@ -42,18 +42,27 @@ def delete_users(api_key, user_emails):
     else:
         print("No users to delete.")
 
+def read_emails_from_csv(csv_file):
+    with open(csv_file, 'r', newline='') as file:
+        reader = csv.DictReader(file)
+        email_field = next(
+            (field for field in reader.fieldnames or [] if field.strip().lower() == 'email'),
+            None
+        )
+        if email_field is None:
+            raise ValueError("CSV file must have an 'Email' column.")
+        return [row[email_field].strip() for row in reader if row[email_field].strip()]
+
 def main():
     print("SCIM USER DELETE TOOL")
     api_key = input("Please enter your SCIM Bearer Token: ")
-    
+
     while True:
         csv_file = input("Please enter the path to the CSV file: ")
-        
+
         try:
-            with open(csv_file, 'r') as file:
-                reader = csv.reader(file)
-                user_emails = [row[0].strip() for row in reader]
-                delete_users(api_key, user_emails)
+            user_emails = read_emails_from_csv(csv_file)
+            delete_users(api_key, user_emails)
         except FileNotFoundError:
             print("File not found. Please enter a valid file path.")
         except Exception as e:
