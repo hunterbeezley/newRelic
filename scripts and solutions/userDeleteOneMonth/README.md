@@ -58,9 +58,7 @@ pip list  # Should show 'requests' package
 
 ### Step 1: Filter Users by Date
 
-**Location**: 
-- Staging: `userDeleteOneMonth-staging/filterIds/filterOldUsers.py`
-- Production: `userDeleteOneMonth-prod/filterIds/filterOldUsers.py`
+**Location**: `filterIds/filterOldUsers.py` (shared by staging and prod — it only filters a local JSON file by date and makes no NerdGraph calls, so one copy covers both)
 
 **Input**: JSON file with user metadata (see example: `users.json.json`)
 
@@ -68,7 +66,7 @@ pip list  # Should show 'requests' package
 
 **Run**:
 ```bash
-cd userDeleteOneMonth-staging/filterIds  # or -prod
+cd filterIds
 python filterOldUsers.py
 ```
 
@@ -208,11 +206,10 @@ The scripts are separated into two directories:
 
 ```
 userDeleteOneMonth/
+├── filterIds/                     # Shared — filterOldUsers.py makes no API calls, so one copy covers both envs
 ├── userDeleteOneMonth-staging/    # For staging-api.newrelic.com
-│   ├── filterIds/
 │   └── massDeleteUsers/
 └── userDeleteOneMonth-prod/       # For api.newrelic.com
-    ├── filterIds/
     └── massDeleteUsers/
 ```
 
@@ -329,12 +326,10 @@ Must be in this format (but this should be automatically created by filterOldUse
 userDeleteOneMonth/
 ├── README.md                                          # This file
 │
+├── filterIds/
+│   └── filterOldUsers.py                             # Step 1: Filter by date (shared — no API calls, works for both envs)
+│
 ├── userDeleteOneMonth-staging/
-│   ├── filterIds/
-│   │   ├── filterOldUsers.py                         # Step 1: Filter by date
-│   │   ├── users.json.json                           # Example input
-│   │   └── unfiltered.json                           # Example input
-│   │
 │   └── massDeleteUsers/
 │       ├── massDeleteUsers.py                        # Step 2: Delete users
 │       ├── example_users_dict.json                   # Example output from Step 1
@@ -343,10 +338,6 @@ userDeleteOneMonth/
 │           └── api_key.txt                           # Your API key (gitignored)
 │
 └── userDeleteOneMonth-prod/
-    ├── filterIds/
-    │   ├── filterOldUsers.py                         # Step 1: Filter by date
-    │   └── users.json.json                           # Example input
-    │
     └── massDeleteUsers/
         ├── massDeleteUsers.py                        # Step 2: Delete users
         ├── example_users_dict.json                   # Example output from Step 1
