@@ -1,6 +1,9 @@
 # New Relic User Mass Deletion Tool - prod & staging
 
-## ⚠️ READ THIS ENTIRE SECTION BEFORE PROCEEDING ⚠️ 
+## ⚠️ CRITICAL WARNINGS ⚠️
+
+**READ THIS ENTIRE SECTION BEFORE PROCEEDING**
+
 - **THIS PERMANENTLY DELETES USER RECORDS** - There is no easy way to undo, recover, or rollback
 - **ONLY USE FOR EXTREME EDGE-CASES** -- where hundreds of duplicate user records exist for the same email
 - **ALWAYS TEST AGAINST TEST USERS FIRST** - Make sure you understand how this works against users that are safe to delete before trouching the real users (especially in prod)
@@ -58,6 +61,8 @@ pip list  # Should show 'requests' package
 
 ### Step 1: Filter Users by Date
 
+**Purpose**: Narrow down hundreds/thousands of user records to only those older than X days
+
 **Location**: `filterIds/filterOldUsers.py` (shared by staging and prod — it only filters a local JSON file by date and makes no NerdGraph calls, so one copy covers both)
 
 **Input**: JSON file with user metadata (see example: `users.json.json`)
@@ -70,7 +75,7 @@ cd filterIds
 python filterOldUsers.py
 ```
 
-**Prompts**:
+**Interactive prompts**:
 1. Path to your user metadata JSON file
 2. Days threshold (default: 30)
 3. Output file path (default: `{input_filename}_filtered.json`)
