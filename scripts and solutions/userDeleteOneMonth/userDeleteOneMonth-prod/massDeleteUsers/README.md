@@ -48,7 +48,7 @@ echo "YOUR_NEWRELIC_API_KEY_HERE" > config/api_key.txt
 
 1. Run the script:
 ```bash
-python delete_users.py
+python massDeleteUsers.py
 ```
 
 2. Follow the prompts:
